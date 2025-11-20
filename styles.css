@@ -1,0 +1,534 @@
+/* ========================================
+   ECOTRACKER IRELAND - STYLES
+   A clean, modern design for our ecological map
+   ======================================== */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   HEADER SECTION
+   ======================================== */
+header {
+    background: linear-gradient(135deg, #2d5016 0%, #4a7c2d 100%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* ========================================
+   CONTROL PANEL
+   ======================================== */
+.control-panel {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.control-panel h3 {
+    margin-bottom: 15px;
+    color: #2d5016;
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.mode-btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 15px 20px;
+    font-size: 1em;
+    border: 2px solid #4a7c2d;
+    background: white;
+    color: #4a7c2d;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.mode-btn:hover {
+    background: #f0f8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mode-btn.active {
+    background: #4a7c2d;
+    color: white;
+}
+
+.report-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.report-btn:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   MAP CONTAINER
+   ======================================== */
+#map {
+    height: 600px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 4px solid white;
+}
+
+/* ========================================
+   LEGEND TOGGLE BUTTON
+   ======================================== */
+.legend-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #4a7c2d;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.legend-toggle:hover {
+    background: #3a6c1d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   LEGEND
+   ======================================== */
+.legend {
+    position: fixed;
+    bottom: 70px;
+    left: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 300px;
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.legend-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #4a7c2d;
+    padding-bottom: 5px;
+}
+
+.legend h4 {
+    margin: 0;
+    color: #2d5016;
+}
+
+.legend-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.legend-close:hover {
+    color: #000;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    font-size: 0.9em;
+    padding: 4px 0;
+}
+
+.legend-item .legend-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.legend-item .legend-label strong {
+    font-size: 0.95em;
+    color: #2d5016;
+}
+
+.legend-item .legend-label small {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 2px;
+}
+
+.legend-color {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 2px solid #ddd;
+    flex-shrink: 0;
+}
+
+.legend-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.legend-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.legend-section-title {
+    font-weight: bold;
+    color: #2d5016;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+/* ========================================
+   INFO PANEL
+   ======================================== */
+.info-panel {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-panel h3 {
+    color: #2d5016;
+    margin-bottom: 10px;
+}
+
+.info-panel p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.info-panel ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.info-panel li {
+    margin: 5px 0;
+}
+
+/* ========================================
+   CUSTOM POPUP STYLES
+   ======================================== */
+.custom-popup {
+    min-width: 250px;
+}
+
+.popup-header {
+    background: #4a7c2d;
+    color: white;
+    padding: 10px;
+    margin: -10px -10px 10px -10px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+.popup-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.popup-content p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.endangered-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.safe-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #51cf66;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* ========================================
+   MODAL (for wildlife sighting form)
+   ======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+}
+
+.modal-content h2 {
+    color: #2d5016;
+    margin-bottom: 20px;
+}
+
+/* ========================================
+   FORM STYLES
+   ======================================== */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #4a7c2d;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    padding: 12px;
+    background: #4a7c2d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #3a6c1d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#formMessage {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#formMessage.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#formMessage.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    .mode-buttons {
+        flex-direction: column;
+    }
+    
+    .mode-btn {
+        min-width: 100%;
+    }
+    
+    #map {
+        height: 400px;
+        margin: 10px;
+    }
+    
+    .legend-toggle {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+    
+    .legend {
+        position: fixed;
+        bottom: 60px;
+        left: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+        max-height: 60vh;
+    }
+    
+    .control-panel,
+    .info-panel {
+        margin: 10px;
+    }
+}
+
+/* ========================================
+   CUSTOM MARKER ICONS
+   ======================================== */
+.animal-marker {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    padding: 0;
+}
+
+.leaflet-popup-content {
+    margin: 10px;
+}
+

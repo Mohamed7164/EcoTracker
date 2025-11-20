@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTracker - Interactive Ireland Nature Map</title>
+    
+    <!-- Leaflet CSS for the interactive map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Our custom styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Header -->
+    <header>
+        <h1>🌿 EcoTracker Ireland</h1>
+        <p>Explore Ireland's wildlife, ecosystems, and climate</p>
+    </header>
+
+    <!-- Control Panel for switching modes -->
+    <div class="control-panel">
+        <h3>Map Modes:</h3>
+        <div class="mode-buttons">
+            <button id="defaultMode" class="mode-btn active">
+                🦌 Wildlife & Biomes
+            </button>
+            <button id="climateMode" class="mode-btn">
+                🌦️ Climate Zones
+            </button>
+            <button id="underwaterMode" class="mode-btn">
+                🐟 Marine Life
+            </button>
+        </div>
+        
+        <!-- Button to open wildlife sighting form -->
+        <button id="reportSightingBtn" class="report-btn">
+            📸 Report Wildlife Sighting
+        </button>
+    </div>
+
+    <!-- Toggle button for legend -->
+    <button class="legend-toggle" id="legendToggle">
+        📋 Show Legend
+    </button>
+
+    <!-- Legend showing what icons mean -->
+    <div class="legend" id="legend" style="display: none;">
+        <div class="legend-header">
+            <h4>Legend</h4>
+            <button class="legend-close" id="legendClose">&times;</button>
+        </div>
+        <div id="legendContent">
+            <!-- Legend items will be added dynamically based on current mode -->
+        </div>
+    </div>
+
+    <!-- The main map container -->
+    <div id="map"></div>
+
+    <!-- Information panel for displaying details -->
+    <div class="info-panel" id="infoPanel">
+        <h3>Welcome to EcoTracker!</h3>
+        <p>Click on markers to learn about Ireland's amazing wildlife and ecosystems.</p>
+        <p><strong>Current Mode:</strong> Wildlife & Biomes</p>
+        <ul>
+            <li>🦌 Animal markers show where species live</li>
+            <li>🌲 Green areas show forests and natural zones</li>
+            <li>Click any county to see local information</li>
+        </ul>
+    </div>
+
+    <!-- Modal for wildlife sighting form -->
+    <div id="sightingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Report a Wildlife Sighting</h2>
+            <form id="sightingForm">
+                <label for="speciesName">Species Name:</label>
+                <input type="text" id="speciesName" name="speciesName" required 
+                       placeholder="e.g., Red Fox, Atlantic Puffin">
+                
+                <label for="location">Location (County or Town):</label>
+                <input type="text" id="location" name="location" required 
+                       placeholder="e.g., County Cork, Dingle Peninsula">
+                
+                <label for="date">Date of Sighting:</label>
+                <input type="date" id="date" name="date" required>
+                
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" 
+                          placeholder="Describe what you saw..."></textarea>
+                
+                <label for="email">Your Email (optional):</label>
+                <input type="email" id="email" name="email" 
+                       placeholder="your.email@example.com">
+                
+                <button type="submit" class="submit-btn">Submit Sighting</button>
+            </form>
+            <div id="formMessage"></div>
+        </div>
+    </div>
+
+    <!-- Leaflet JavaScript library for maps -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Our data file with all Irish ecological information -->
+    <script src="data.js"></script>
+    
+    <!-- Our main application logic -->
+    <script src="app.js"></script>
+</body>
+</html>
+
